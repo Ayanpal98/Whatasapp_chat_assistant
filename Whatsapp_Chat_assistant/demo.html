@@ -93,22 +93,34 @@
     </div>
 
     <script>
-        function toggleChat() {
-            const container = document.getElementById('chat-container');
-            const icon = document.getElementById('launcher-icon');
-            const launcher = document.getElementById('chat-launcher');
+    // Toggle function for manual clicks
+    function toggleChat() {
+        const container = document.getElementById('chat-container');
+        const icon = document.getElementById('launcher-icon');
+        const launcher = document.getElementById('chat-launcher');
 
-            if (container.style.display === 'none' || container.style.display === '') {
-                container.style.display = 'flex';
-                icon.className = 'fas fa-times'; // Switch to close icon
-                launcher.style.background = '#ff4d4d'; // Change button color to red
-            } else {
-                container.style.display = 'none';
-                icon.className = 'fab fa-whatsapp'; // Switch back to WhatsApp
-                launcher.style.background = '#25D366'; // Reset color
-            }
+        if (container.style.display === 'none' || container.style.display === '') {
+            container.style.display = 'flex';
+            icon.className = 'fas fa-times';
+            launcher.style.background = '#ff4d4d';
+        } else {
+            container.style.display = 'none';
+            icon.className = 'fab fa-whatsapp';
+            launcher.style.background = '#25D366';
         }
-    </script>
+    }
+
+    // NEW: Auto-open after 5 seconds (5000 milliseconds)
+    window.onload = function() {
+        setTimeout(function() {
+            const container = document.getElementById('chat-container');
+            // Only open automatically if the user hasn't already opened it
+            if (container.style.display === 'none' || container.style.display === '') {
+                toggleChat();
+            }
+        }, 5000);
+    };
+</script>
 
 </body>
 </html>
