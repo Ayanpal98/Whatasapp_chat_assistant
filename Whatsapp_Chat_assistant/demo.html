@@ -3,59 +3,112 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Assistant Platform | Demo</title>
+    <title>AyanAI | Premium Chat Solutions</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; color: #333; line-height: 1.6; }
-        header { background: #25D366; color: white; padding: 60px 20px; text-align: center; }
-        .hero h1 { font-size: 2.5rem; margin-bottom: 10px; }
-        .hero p { font-size: 1.2rem; opacity: 0.9; }
-        .section { padding: 50px 20px; max-width: 800px; margin: auto; text-align: center; }
-        .feature-grid { display: flex; gap: 20px; justify-content: center; margin-top: 30px; flex-wrap: wrap; }
-        .feature-card { background: #f9f9f9; padding: 20px; border-radius: 10px; width: 200px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-        .feature-card h3 { color: #128C7E; }
-        footer { text-align: center; padding: 40px; background: #eee; font-size: 0.9rem; }
+        :root { --primary: #25D366; --dark: #128C7E; --bg: #ffffff; }
+        body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; margin: 0; background: var(--bg); color: #1a1a1a; scroll-behavior: smooth; overflow-x: hidden; }
+
+        /* Navigation */
+        nav { display: flex; justify-content: space-between; padding: 20px 10%; align-items: center; border-bottom: 1px solid #eee; background: white; position: sticky; top: 0; z-index: 100; }
+        .logo { font-size: 1.5rem; font-weight: 800; color: var(--primary); }
+
+        /* Hero Section */
+        .hero { padding: 100px 10%; text-align: center; background: radial-gradient(circle at top, #f0fff4 0%, #ffffff 100%); }
+        .hero h1 { font-size: 3.5rem; letter-spacing: -2px; margin-bottom: 20px; line-height: 1.1; }
+        .hero p { font-size: 1.25rem; color: #666; max-width: 600px; margin: 0 auto 30px; }
+        .btn { background: var(--primary); color: white; padding: 15px 35px; border-radius: 50px; text-decoration: none; font-weight: 600; transition: 0.3s; display: inline-block; }
+        .btn:hover { background: var(--dark); transform: translateY(-2px); box-shadow: 0 10px 20px rgba(37, 211, 102, 0.2); }
+
+        /* Features Section */
+        .features { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; padding: 80px 10%; }
+        .card { padding: 40px; border-radius: 24px; border: 1px solid #eee; transition: 0.3s; text-align: left; }
+        .card:hover { border-color: var(--primary); box-shadow: 0 20px 40px rgba(0,0,0,0.05); }
+        .card i { font-size: 2.5rem; color: var(--primary); margin-bottom: 25px; }
+        .card h3 { margin-bottom: 15px; font-size: 1.4rem; }
+
+        /* Integration Section */
+        .integration-preview { background: #f9f9f9; padding: 80px 10%; text-align: center; border-radius: 50px; margin: 0 5%; }
+        .code-snippet { background: #1a1a1a; color: #00ff41; padding: 25px; border-radius: 12px; font-family: 'Courier New', monospace; text-align: left; max-width: 600px; margin: 30px auto; overflow-x: auto; position: relative; }
+
+        /* Chat Toggle Logic UI */
+        #chat-launcher { position: fixed; bottom: 30px; right: 30px; width: 65px; height: 65px; background: var(--primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4); z-index: 10001; transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        #chat-launcher:hover { transform: scale(1.1); }
+        #chat-launcher i { color: white; font-size: 32px; }
+
+        #chat-container { display: none; position: fixed; bottom: 110px; right: 30px; width: 400px; height: 600px; z-index: 10000; flex-direction: column; animation: slideUp 0.4s ease-out; }
+        @keyframes slideUp { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
+
+        @media (max-width: 480px) {
+            #chat-container { width: 90%; right: 5%; bottom: 100px; height: 70vh; }
+            .hero h1 { font-size: 2.5rem; }
+        }
     </style>
 </head>
 <body>
 
-    <header class="hero">
-        <h1>Smart WhatsApp AI Assistant</h1>
-        <p>The 24/7 Customer Support Solution for Your Business</p>
-    </header>
+    <nav>
+        <div class="logo">Ayan<span style="color:#333">AI</span></div>
+        <a href="#setup" class="btn" style="padding: 10px 25px; font-size: 0.9rem;">Get Code</a>
+    </nav>
 
-    <div class="section">
-        <h2>Why Use Our Platform?</h2>
-        <div class="feature-grid">
-            <div class="feature-card">
-                <h3>Instant</h3>
-                <p>No more waiting for human agents.</p>
-            </div>
-            <div class="feature-card">
-                <h3>24/7</h3>
-                <p>Always online, even while you sleep.</p>
-            </div>
-            <div class="feature-card">
-                <h3>Easy</h3>
-                <p>One line of code to integrate.</p>
-            </div>
+    <section class="hero">
+        <h1>Stop losing leads while you sleep.</h1>
+        <p>Deploy our WhatsApp-powered AI Assistant to your website in less than 2 minutes. Automated, intelligent, and always online.</p>
+        <a href="#setup" class="btn">View Integration Steps</a>
+    </section>
+
+    <section class="features">
+        <div class="card">
+            <i class="fas fa-bolt"></i>
+            <h3>Instant Response</h3>
+            <p>Our AI analyzes and answers customer queries in milliseconds, just like your live test.</p>
         </div>
-        <p style="margin-top: 40px; font-weight: bold; color: #666;">
-            Check the bottom-right corner to see the assistant in action! ↘️
-        </p>
+        <div class="card">
+            <i class="fas fa-shield-halved"></i>
+            <h3>Verified Security</h3>
+            <p>Built with secure GitHub version control and hosted on professional Netlify servers.</p>
+        </div>
+        <div class="card">
+            <i class="fas fa-mobile-screen-button"></i>
+            <h3>Fully Responsive</h3>
+            <p>Optimized for mobile browsers to ensure your customers get help on the go.</p>
+        </div>
+    </section>
+
+    <section id="setup" class="integration-preview">
+        <h2>One Line of Code. Total Control.</h2>
+        <p>Copy this snippet and paste it before the end of your <code>&lt;/body&gt;</code> tag.</p>
+        <div class="code-snippet">
+            &lt;iframe src="https://deploychatassistant.netlify.app/" width="380" height="550" style="border:none; border-radius:20px;"&gt;&lt;/iframe&gt;
+        </div>
+    </section>
+
+    <div id="chat-launcher" onclick="toggleChat()">
+        <i id="launcher-icon" class="fab fa-whatsapp"></i>
     </div>
 
-    <footer>
-        <p>&copy; 2026 Ayan's AI Platform. Built with Netlify & GitHub.</p>
-    </footer>
-
-    <div style="position: fixed; bottom: 20px; right: 20px; z-index: 1000;">
-        <iframe
-            src="https://deploychatassistant.netlify.app/"
-            width="380"
-            height="550"
-            style="border: none; border-radius: 20px; box-shadow: 0 15px 40px rgba(0,0,0,0.2);">
-        </iframe>
+    <div id="chat-container">
+        <iframe src="https://deploychatassistant.netlify.app/" width="100%" height="100%" style="border: none; border-radius: 20px; box-shadow: 0 20px 50px rgba(0,0,0,0.2);"></iframe>
     </div>
+
+    <script>
+        function toggleChat() {
+            const container = document.getElementById('chat-container');
+            const icon = document.getElementById('launcher-icon');
+            const launcher = document.getElementById('chat-launcher');
+
+            if (container.style.display === 'none' || container.style.display === '') {
+                container.style.display = 'flex';
+                icon.className = 'fas fa-times'; // Switch to close icon
+                launcher.style.background = '#ff4d4d'; // Change button color to red
+            } else {
+                container.style.display = 'none';
+                icon.className = 'fab fa-whatsapp'; // Switch back to WhatsApp
+                launcher.style.background = '#25D366'; // Reset color
+            }
+        }
+    </script>
 
 </body>
 </html>
